@@ -9,6 +9,10 @@ VALIDATE $? "enabling nginx:1.24"
 dnf install nginx -y &>>$LOG_FILE
 VALIDATE $? "installing nginx:1.24"
 
+systemctl enable nginx  &>>$LOG_FILE
+systemctl start nginx 
+VALIDATE $? "Starting Nginx"
+
 rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
 VALIDATE $? "delete default html content"
 

@@ -13,11 +13,12 @@ VALIDATE $? "start rabbitmq repo"
 
 
 if id roboshop &>>$LOG_FILE; then
+    echo -e "User already exists ... $Y SKIPPING $N"    
+else 
     rabbitmqctl add_user roboshop roboshop123 &>>$LOG_FILE
     VALIDATE $? "create system user"
     rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>$LOG_FILE
     VALIDATE $? "set user permission" 
-else echo -e "User already exists ... $Y SKIPPING $N"
 fi
 
 print_total_time
