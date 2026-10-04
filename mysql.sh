@@ -18,4 +18,4 @@ systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Start mysqld"
 mysql_secure_installation --set-root-pass RoboShop@1 &>>$LOG_FILE
 VALIDATE $? "Setting up passwd"
-print_total-time
+print_total_time
